@@ -65,6 +65,10 @@ class FrontEndController extends Controller
             ->take(3)
             ->get();
 
+            $ogImage = $artikel->gambar_url ?? asset('uploads/' . $artikel->gambar_artikel);
+            $ogTitle = $artikel->judul ?? 'Judul Default';
+            $ogDescription = substr(strip_tags($artikel->body ?? ''), 0, 200) . '...'; 
+
         return view('frontend.detail.detail-artikel', [
             'artikel' => $artikel,
             'kategori' => $kategori,
@@ -73,6 +77,9 @@ class FrontEndController extends Controller
             'trendingArtikel' => $trendingArtikel,
             'artikelbulan' => $artikelbulan,
             'beritaTerpopulerTahun' => $beritaTerpopulerTahun,
+            'ogImage' => $ogImage,
+            'ogTitle' => $ogTitle,
+            'ogDescription' => $ogDescription,
 
         ]);
     }
