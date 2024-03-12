@@ -1,7 +1,7 @@
 <div class="container-fluid paddding mb-5">
     <div class="row mx-0">
         <div class="col-md-6 col-12 paddding animate-box" data-animate-effect="fadeIn">
-            @foreach ($artkl->where('kategori.nama_kategori', 'Kampus')->take(1) as $item)
+            @foreach ($artkl->where('kategori.nama_kategori', 'kategori 1')->take(1) as $item)
                 <div class="fh5co_suceefh5co_height">
                     <img src="{{ asset('uploads/' . $item->gambar_artikel) }}" alt="img" />
                     <div class="fh5co_suceefh5co_height_position_absolute"></div>
@@ -24,7 +24,7 @@
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
-                    @foreach ($artkl->where('kategori.nama_kategori', 'Opini')->take(1) as $item)
+                    @foreach ($artkl->where('kategori.nama_kategori', 'kategori 2')->take(1) as $item)
                         <div class="fh5co_suceefh5co_height_2">
                             <img src="{{ asset('uploads/' . $item->gambar_artikel) }}" alt="img" />
                             <div class="fh5co_suceefh5co_height_position_absolute"></div>
@@ -41,7 +41,7 @@
                     @endforeach
                 </div>
                 <div class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
-                    @foreach ($artkl->where('kategori.nama_kategori', 'Breaking News')->take(1) as $item)
+                    @foreach ($artkl->where('kategori.nama_kategori', 'kategori 3')->take(1) as $item)
                         <div class="fh5co_suceefh5co_height_2">
                             <img src="{{ asset('uploads/' . $item->gambar_artikel) }}" alt="img" />
                             <div class="fh5co_suceefh5co_height_position_absolute"></div>
@@ -58,7 +58,7 @@
                     @endforeach
                 </div>
                 <div class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
-                    @foreach ($artkl->where('kategori.nama_kategori', 'Mancanegara')->take(1) as $item)
+                    @foreach ($artkl->where('kategori.nama_kategori', 'kategori 4')->take(1) as $item)
                         <div class="fh5co_suceefh5co_height_2">
                             <img src="{{ asset('uploads/' . $item->gambar_artikel) }}" alt="img" />
                             <div class="fh5co_suceefh5co_height_position_absolute"></div>
@@ -75,7 +75,7 @@
                     @endforeach
                 </div>
                 <div class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
-                    @foreach ($artkl->where('kategori.nama_kategori', 'Puisi')->take(1) as $item)
+                    @foreach ($artkl->where('kategori.nama_kategori', 'kategori 5')->take(1) as $item)
                         <div class="fh5co_suceefh5co_height_2">
                             <img src="{{ asset('uploads/' . $item->gambar_artikel) }}" alt="img" />
                             <div class="fh5co_suceefh5co_height_position_absolute"></div>
