@@ -40,8 +40,8 @@
               <h3 class="judul-artikel">{{ $artikel->judul }}</h3>
         </div>
         <br>
-            <img src="{{ asset('uploads/' . $artikel->gambar_artikel) }}" class="img-fluid" alt="..."
-    style="object-fit: cover; width: 100%; height: auto;">
+            <img src="{{ asset('uploads/' . $artikel->gambar_artikel) }}" class="img-fluid "  alt="..."
+    style="object-fit: cover; width: 100%; height: auto; padding-left: 50px; padding-right: 50px;">
     
 
 
