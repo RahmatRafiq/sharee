@@ -44,7 +44,7 @@ class ArtikelController extends Controller
             'slug' => Str::slug($request->judul),
             'user_id' => Auth::id(),
             'views' => 0,
-            'is_active' => 1,
+            'is_active' => $request->is_active,
             'gambar_artikel' => $request->file('gambar_artikel')->store('artikel'),
         );
 
@@ -73,7 +73,8 @@ class ArtikelController extends Controller
             'slug' => Str::slug($request->judul),
             'user_id' => Auth::id(),
             'views' => 0,
-            'is_active' => 1,
+            'is_active' => $request->is_active,
+
         );
 
         $artikel = Artikel::find($id);
