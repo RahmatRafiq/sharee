@@ -13,12 +13,8 @@ class FrontEndController extends Controller
 
     public function index()
     {
-
         $penulis = Penulis::all();
-        $artikel = Artikel::latest()->paginate(5);
-        foreach ($artikel as $item) {
-            $item->status = $item->is_active ? 'Publish' : 'Draft';
-        }
+        $artikel = Artikel::latest()->where('is_active', true)->paginate(5); // Hanya ambil artikel yang statusnya Publish
         $artkl = Artikel::orderBy('created_at', 'desc')->get();
         $artikelbulan = Artikel::orderBy('views', 'desc')->whereMonth('created_at', now()->month)->take(7)->get();
         $kategori = Kategori::all();
@@ -44,10 +40,9 @@ class FrontEndController extends Controller
             'trendingArtikel' => $trendingArtikel,
             'artikelbulan' => $artikelbulan,
             'beritaTerpopulerTahun' => $beritaTerpopulerTahun,
-
         ]);
-
     }
+
 
     public function show($slug)
     {
@@ -70,7 +65,7 @@ class FrontEndController extends Controller
             ->get();
 
 
-            
+
         return view('frontend.detail.detail-artikel', [
             'artikel' => $artikel,
             'kategori' => $kategori,
