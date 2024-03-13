@@ -16,6 +16,9 @@ class FrontEndController extends Controller
 
         $penulis = Penulis::all();
         $artikel = Artikel::latest()->paginate(5);
+        foreach ($artikel as $item) {
+            $item->status = $item->is_active ? 'Publish' : 'Draft';
+        }
         $artkl = Artikel::orderBy('created_at', 'desc')->get();
         $artikelbulan = Artikel::orderBy('views', 'desc')->whereMonth('created_at', now()->month)->take(7)->get();
         $kategori = Kategori::all();
@@ -49,7 +52,8 @@ class FrontEndController extends Controller
     public function show($slug)
     {
         $artikel = Artikel::where('slug', $slug)->first();
-        $artikel->increment('views'); //melakukan penambahan jumlah views ketika mengakses detail berita berdasarkan slug
+        $artikel->increment('views');
+        $artikel->status = $artikel->is_active ? 'Publish' : 'Draft';
         $artikelbulan = Artikel::orderBy('views', 'desc')->whereMonth('created_at', now()->month)->take(7)->get();
 
         $kategori = Kategori::all();
