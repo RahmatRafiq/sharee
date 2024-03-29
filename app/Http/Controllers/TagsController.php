@@ -18,6 +18,12 @@ class TagsController extends Controller
         return view('backend.tags.index', compact('tags', 'tentangkami'));
     }
 
+public function create()
+    {
+        $tentangkami = TentangKami::first();
+        return view('backend.tags.create', compact('tentangkami'));
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -29,6 +35,13 @@ class TagsController extends Controller
             'slug' => Str::slug($request->nama_tags),
         ]);
         return redirect()->route('tags.index')->with(['success' => 'Data Berhasil Disimpan']);
+    }
+
+public function edit($id)
+    {
+        $tentangkami = TentangKami::first();
+        $tags = Tags::findOrFail($id);
+        return view('backend.tags.edit', compact('tags', 'tentangkami'));
     }
 
     public function update(Request $request, $id)

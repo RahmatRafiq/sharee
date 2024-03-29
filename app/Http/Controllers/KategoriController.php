@@ -29,6 +29,12 @@ class KategoriController extends Controller
         return redirect()->route('kategori.index')->with(['success' => 'Data Berhasil Disimpan']);
     }
 
+    public function edit($id)
+    {
+        $tentangkami = TentangKami::first();
+        $kategori = Kategori::find($id);
+        return \view('backend.kategori.edit', compact('kategori', 'tentangkami'));
+    }
     public function update(Request $request, $id)
     {
         $this->validate($request, [

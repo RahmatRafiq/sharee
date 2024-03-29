@@ -44,10 +44,8 @@
                                             <td>{{ $row->nama_kategori }}</td>
                                             <td>{{ $row->slug }}</td>
                                             <td>
-                                                <a href="#" class="btn btn-warning btn-sm edit-kategori"
-                                                    data-toggle="modal" data-target="#editKategoriModal"
-                                                    data-id="{{ $row->id }}" data-nama="{{ $row->nama_kategori }}"
-                                                    data-slug="{{ $row->slug }}"><i class="fas fa-pen"></i> Edit</a>
+                                                <a href="{{ route('kategori.edit', $row->id) }}"
+                                                    class=" btn btn-warning btn-sm"><i class="fas fa-pen"></i>Edit</a>
 
                                                 <form action="{{ route('kategori.destroy', $row->id) }}" method="post"
                                                     class="d-inline">
@@ -103,34 +101,7 @@
     </div>
 
     <!-- Modal Edit Kategori -->
-    <div class="modal fade" id="editKategoriModal" tabindex="-1" role="dialog" aria-labelledby="editKategoriModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form id="editKategoriForm" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editKategoriModalLabel">Edit Kategori</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="edit_nama_kategori">Nama Kategori</label>
-                            <input type="text" class="form-control" id="edit_nama_kategori" name="edit_nama_kategori"
-                                placeholder="Nama Kategori" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    
 
     <script>
         $(document).on('click', '.edit-kategori', function() {
