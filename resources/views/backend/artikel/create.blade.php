@@ -36,19 +36,20 @@
                                 <label for="kategori_id">Kategori</label>
                                 <select name="kategori_id" class="form-control">
                                     @foreach ($kategori as $row)
-                                        <option value="{{ $row->id }}">{{ $row->nama_kategori }}</option>
+                                        <option value="{{ $row->tags_id }}">{{ $row->nama_kategori }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="penulis_id">Penulis</label>
-                                <select name="penulis_id" class="form-control">
-                                    @foreach ($penulis as $row)
-                                        <option value="{{ $row->id }}">{{ $row->nama_penulis }}</option>
+                                <label for="tags_id">Tags</label>
+                                <select name="tags_id" class="form-control">
+                                    @foreach ($tags as $tag)
+                                        <option value="{{ $tag->id }}">{{ $tag->nama_tags }}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            
 
                             <div class="form-group">
                                 <label for="gambar_artikel">Gambar Artikel</label>

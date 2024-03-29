@@ -17,6 +17,7 @@ class Artikel extends Model
         'slug',
         'kategori_id',
         'penulis_id',
+        'tags_id',
         'user_id',
         'gambar_artikel',
         'is_active',

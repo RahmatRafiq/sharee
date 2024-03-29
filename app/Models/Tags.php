@@ -16,8 +16,8 @@ class Tags extends Model
         'slug',
     ];
     protected $hidden = [];
-    public function tagsArtikel()
+    public function artikel()
     {
-        return $this->belongsTo(Artikel::class, 'tags_id', 'id');
+        return $this->hasMany(Artikel::class, 'tags_id', 'id');
     }
 }
