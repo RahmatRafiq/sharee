@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artikel;
 use App\Models\Kategori;
 use App\Models\Penulis;
+use App\Models\Tags;
 use App\Models\TentangKami;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,19 +19,18 @@ class ArtikelController extends Controller
 
         $artikel = Artikel::all();
         $tentangkami = TentangKami::first();
-        return view('backend.artikel.index', [
-            'artikel' => $artikel,
-            'tentangkami' => $tentangkami,
-        ]);
+        $tags = Tags::all();
+        return view('backend.artikel.index',compact( 'tentangkami', 'tags', 'artikel'));
     }
 
     public function create()
     {
         $kategori = Kategori::all();
         $penulis = Penulis::all();
+        $tags = Tags::all();
         $tentangkami = TentangKami::first();
 
-        return view('backend.artikel.create', compact('penulis', 'kategori', 'tentangkami'));
+        return view('backend.artikel.create', compact('penulis', 'kategori', 'tentangkami', 'tags'));
     }
 
     public function store(Request $request)
@@ -45,6 +45,7 @@ class ArtikelController extends Controller
             'user_id' => Auth::id(),
             'views' => 0,
             'is_active' => $request->is_active,
+            'tags_id' => $request->tags_id,
             'gambar_artikel' => $request->file('gambar_artikel')->store('artikel'),
         );
 
@@ -57,9 +58,10 @@ class ArtikelController extends Controller
         $artikel = Artikel::find($id);
         $kategori = Kategori::all();
         $penulis = Penulis::all();
+        $tags = Tags::all();
         $tentangkami = TentangKami::first();
 
-        return view('backend.artikel.edit', compact('artikel', 'penulis', 'kategori', 'tentangkami'));
+        return view('backend.artikel.edit',compact('artikel','penulis', 'kategori', 'tentangkami', 'tags'));
 
     }
 
@@ -73,6 +75,7 @@ class ArtikelController extends Controller
             'slug' => Str::slug($request->judul),
             'user_id' => Auth::id(),
             'views' => 0,
+            'tags_id' => $request->tags_id,
             'is_active' => $request->is_active,
 
         );

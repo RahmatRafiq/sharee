@@ -59,7 +59,14 @@
                                 <br>
                                 <img src="{{ asset('uploads/' . $artikel->gambar_artikel) }}" width="200px">
                             </div>
-
+                            <div class="form-group">
+                                <label for="tags_id">Tags</label>
+                                <select name="tags_id" class="form-control">
+                                    @foreach ($tags as $row)
+                                        <option value="{{ $row->id }}">{{ $row->nama_tags }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label for="is_active">Status</label>
                                 <select name="is_active" class="form-control">

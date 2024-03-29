@@ -39,4 +39,8 @@ class Artikel extends Model
     {
         return $this->belongsTo(Penulis::class, 'penulis_id', 'id');
     }
+    public function tagArtikel()
+    {
+        return $this->belongsTo(Tags::class, 'tags_id', 'id');
+    }
 }

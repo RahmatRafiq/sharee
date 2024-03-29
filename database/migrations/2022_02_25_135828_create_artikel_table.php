@@ -23,9 +23,11 @@ class CreateArtikelTable extends Migration
             $table->string('penulis_id');
             $table->string('gambar_artikel');
             $table->boolean('is_active');
+            $table->text('tags_id');
             $table->integer('views');
             $table->timestamps();
         });
+
     }
 
     /**
