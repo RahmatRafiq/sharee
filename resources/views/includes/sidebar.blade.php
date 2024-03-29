@@ -60,7 +60,12 @@
                         <p>Artikel</p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="{{ route('tags.index') }}">
+                        <i class="fas fa-tags"></i>
+                        <p>Tags</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ route('penulis.index') }}">
                         <i class="fas fa-pen"></i>

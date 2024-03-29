@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tags;
+use App\Models\TentangKami;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -13,7 +14,8 @@ class TagsController extends Controller
     public function index()
     {
         $tags = Tags::all();
-        return view('backend.tags.index', compact('tags'));
+        $tentangkami = TentangKami::first();
+        return view('backend.tags.index', compact('tags', 'tentangkami'));
     }
 
     public function store(Request $request)
@@ -26,8 +28,7 @@ class TagsController extends Controller
             'nama_tags' => $request->nama_tags,
             'slug' => Str::slug($request->nama_tags),
         ]);
-
-        return redirect()->route('backend.tags.index')->with(['success' => 'Data Berhasil Disimpan']);
+        return redirect()->route('tags.index')->with(['success' => 'Data Berhasil Disimpan']);
     }
 
     public function update(Request $request, $id)

@@ -15,9 +15,9 @@
                 <div class="card full-height">
                     <div class="card-header">
                         <div class="card-head-row">
-                            <div class="card-title">Data Kategori</div>
+                            <div class="card-title">Data Tags</div>
                             <a href="#" class="btn btn-primary btn-sm ml-auto" data-toggle="modal"
-                                data-target="#addKategoriModal"><i class="fa fa-plus"></i> Tambah Kategori</a>
+                                data-target="#addKategoriModal"><i class="fa fa-plus"></i> Tambah Tag</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -32,24 +32,24 @@
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Nama Kategori</th>
+                                        <th>Nama Tag</th>
                                         <th>Slug</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($kategori as $i=>$row)
+                                    @forelse ($tags as $i=>$row)
                                         <tr>
                                             <td>{{ $i + 1 }}</td>
-                                            <td>{{ $row->nama_kategori }}</td>
+                                            <td>{{ $row->nama_tags }}</td>
                                             <td>{{ $row->slug }}</td>
                                             <td>
                                                 <a href="#" class="btn btn-warning btn-sm edit-kategori"
-                                                    data-toggle="modal" data-target="#editKategoriModal"
-                                                    data-id="{{ $row->id }}" data-nama="{{ $row->nama_kategori }}"
+                                                    data-toggle="modal" data-target="#editTagsModal"
+                                                    data-id="{{ $row->id }}" data-nama="{{ $row->nama_tags }}"
                                                     data-slug="{{ $row->slug }}"><i class="fas fa-pen"></i> Edit</a>
 
-                                                <form action="{{ route('kategori.destroy', $row->id) }}" method="post"
+                                                <form action="{{ route('tags.destroy', $row->id) }}" method="post"
                                                     class="d-inline">
                                                     @csrf
                                                     @method ('delete')
@@ -74,23 +74,23 @@
     </div>
 
     <!-- Modal Tambah Kategori -->
-    <div class="modal fade" id="addKategoriModal" tabindex="-1" role="dialog" aria-labelledby="addKategoriModalLabel"
+    <div class="modal fade" id="addKategoriModal" tabindex="-1" role="dialog" aria-labelledby="addTagsModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="{{ route('kategori.store') }}" method="POST">
+                <form action="#" method="POST">
                     @csrf
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addKategoriModalLabel">Tambah Kategori</h5>
+                        <h5 class="modal-title" id="addKategoriModalLabel">Tambah Tag</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="nama_kategori">Nama Kategori</label>
-                            <input type="text" class="form-control" id="nama_kategori" name="nama_kategori"
-                                placeholder="Nama Kategori" required>
+                            <label for="nama_kategori">Nama tag</label>
+                            <input type="text" class="form-control" id="nama_tags" name="nama_tags"
+                                placeholder="Nama Tags" required>
                         </div>
                     </div>
                     <div class="modal-footer">
