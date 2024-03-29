@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('Dashboard');
     Route::resource('/tags', App\Http\Controllers\TagsController::class);
+    // Route::put('/tags', [App\Http\Controllers\TagsController::class, 'store']);
     Route::resource('/kategori', App\Http\Controllers\KategoriController::class);
     Route::resource('/artikel', App\Http\Controllers\ArtikelController::class);
     Route::resource('/penulis', App\Http\Controllers\PenulisController::class);

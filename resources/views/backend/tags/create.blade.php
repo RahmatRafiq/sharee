@@ -14,16 +14,16 @@
                 <div class="card full-height">
                     <div class="card-header">
                         <div class="card-head-row">
-                            <div closs="card-title"> Form Kategori</div>
-                            <a href="{{ route('kategori.index') }}" class="btn btn-warning btn-sm ml-auto">Back</a>
+                            <div closs="card-title"> Form tags</div>
+                            <a href="{{ route('tags.index') }}" class="btn btn-warning btn-sm ml-auto">Back</a>
                         </div>
                     </div>
                     <div class="card-body">
                         <form method="post" action="{{ route('kategori.store') }}">
                             @csrf
                             <div class="form-group">
-                                <label for="kategori">Nama Kategori</label>
-                                <input type="text" name="nama_kategori" class="form-control" id="text"
+                                <label for="kategori">Nama tags</label>
+                                <input type="text" name="nama_tags" class="form-control" id="text"
                                     placeholder="Enter Kategori">
 
                             </div>
