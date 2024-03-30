@@ -172,30 +172,6 @@ class FrontEndController extends Controller
         ]);
 
     }
-    // public function tags($slug){
-    //     $tags = Tags::all();
-    //     $artikel = Artikel::all();
-    //     $ktgr = Kategori::all();
-    //     $tentangkami = TentangKami::all();
-    //     $trendingArtikel = Artikel::where('created_at', '>=', now()->startOfWeek())
-    //         ->whereMonth('created_at', now()->month)
-    //         ->orderBy('views', 'desc')
-    //         ->take(5)
-    //         ->get();
-    //     $beritaTerpopulerTahun = Artikel::whereYear('created_at', now()->year)
-    //         ->orderBy('views', 'desc')
-    //         ->take(3)
-    //         ->get();
-
-    //     return view('frontend.detail.blog-tags', [
-    //         'tags' => $tags,
-    //         'ktgr' => $ktgr,
-    //         'artikel' => $artikel,
-    //         'tentangkami' => $tentangkami,
-    //         'trendingArtikel' => $trendingArtikel,
-    //         'beritaTerpopulerTahun' => $beritaTerpopulerTahun,
-    //     ]);
-    // }
 
     public function tags($slug)
 {
