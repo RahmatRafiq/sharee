@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Artikel;
 use App\Models\Kategori;
 use App\Models\Penulis;
+use App\Models\Tags;
 use App\Models\TentangKami;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,7 @@ class FrontEndController extends Controller
         $artkl = Artikel::orderBy('created_at', 'desc')->get();
         $artikelbulan = Artikel::orderBy('views', 'desc')->whereMonth('created_at', now()->month)->take(7)->get();
         $kategori = Kategori::all();
+        $tags = Tags::all();
         $ktgr = Kategori::all();
         $tentangkami = TentangKami::all();
         $trendingArtikel = Artikel::where('created_at', '>=', now()->startOfWeek())
@@ -36,6 +38,7 @@ class FrontEndController extends Controller
             'artkl' => $artkl,
             'penulis' => $penulis,
             'ktgr' => $ktgr,
+            'tags' => $tags,
             'tentangkami' => $tentangkami,
             'trendingArtikel' => $trendingArtikel,
             'artikelbulan' => $artikelbulan,
@@ -49,11 +52,11 @@ class FrontEndController extends Controller
         $artikel = Artikel::where('slug', $slug)->first();
         $artikel->increment('views');
         $artikel->status = $artikel->is_active ? 'Publish' : 'Draft';
-        $artikelbulan = Artikel::orderBy('views', 'desc')->whereMonth('created_at', now()->month)->take(7)->get();
-
         $kategori = Kategori::all();
+        $tags = Tags::all();
         $ktgr = Kategori::all();
         $tentangkami = TentangKami::all();
+        $artikelbulan = Artikel::orderBy('views', 'desc')->whereMonth('created_at', now()->month)->take(7)->get();
         $trendingArtikel = Artikel::where('created_at', '>=', now()->startOfWeek())
             ->whereMonth('created_at', now()->month)
             ->orderBy('views', 'desc')
@@ -70,6 +73,7 @@ class FrontEndController extends Controller
             'artikel' => $artikel,
             'kategori' => $kategori,
             'ktgr' => $ktgr,
+            'tags' => $tags,
             'tentangkami' => $tentangkami,
             'trendingArtikel' => $trendingArtikel,
             'artikelbulan' => $artikelbulan,
@@ -83,6 +87,7 @@ class FrontEndController extends Controller
         $tentangkami = TentangKami::all();
         $kategori = Kategori::where('slug', $slug)->firstOrFail();
         $ktgr = Kategori::all();
+        $tags = Tags::all();
         $artikel = Artikel::where('kategori_id', $kategori->id)->get();
         $artkl = Artikel::where('kategori_id', $kategori->id)->orderBy('created_at', 'desc')->get();
         $penulis = Penulis::all();
@@ -102,6 +107,7 @@ class FrontEndController extends Controller
             'penulis' => $penulis,
             'artkl' => $artkl,
             'ktgr' => $ktgr,
+            'tags' => $tags,
             'tentangkami' => $tentangkami,
             'trendingArtikel' => $trendingArtikel,
             'beritaTerpopulerTahun' => $beritaTerpopulerTahun,
@@ -118,6 +124,7 @@ class FrontEndController extends Controller
 
         $kategori = Kategori::all();
         $ktgr = Kategori::all();
+        $tags = Tags::all();
         $tentangkami = TentangKami::all();
         $trendingArtikel = Artikel::where('created_at', '>=', now()->startOfWeek())
             ->whereMonth('created_at', now()->month)
@@ -134,6 +141,7 @@ class FrontEndController extends Controller
             'keyword' => $keyword,
             'kategori' => $kategori,
             'ktgr' => $ktgr,
+            'tags' => $tags,
             'tentangkami' => $tentangkami,
             'trendingArtikel' => $trendingArtikel,
             'beritaTerpopulerTahun' => $beritaTerpopulerTahun,
@@ -144,6 +152,7 @@ class FrontEndController extends Controller
     {
         $tentangkami = TentangKami::all();
         $ktgr = Kategori::all();
+        $tags = Tags::all();
         $trendingArtikel = Artikel::where('created_at', '>=', now()->startOfWeek())
             ->whereMonth('created_at', now()->month)
             ->orderBy('views', 'desc')
@@ -157,6 +166,7 @@ class FrontEndController extends Controller
         return view('frontend.detail.about', [
             'tentangkami' => $tentangkami,
             'ktgr' => $ktgr,
+            'tags' => $tags,
             'trendingArtikel' => $trendingArtikel,
             'beritaTerpopulerTahun' => $beritaTerpopulerTahun,
         ]);
