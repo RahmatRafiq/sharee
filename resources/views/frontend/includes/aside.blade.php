@@ -1,11 +1,11 @@
 <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
     <div>
-        <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Kategori</div>
+        <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tag</div>
     </div>
     <div class="clearfix"></div>
     <div class="fh5co_tags_all">
-        @foreach ($kategori as $item)
-            <a href="{{ route('kategori', $item->slug) }}" class="fh5co_tagg">{{ $item->nama_kategori }}</a>
+        @foreach ($tags as $item)
+            <a href="{{ route('tags', $item->slug) }}" class="fh5co_tagg">{{ $item->nama_tags }}</a>
         @endforeach
     </div>
     <div>
